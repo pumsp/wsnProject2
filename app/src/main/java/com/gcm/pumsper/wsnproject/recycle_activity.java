@@ -58,21 +58,15 @@ public class recycle_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Toast.makeText(mcontext, "url = "+link, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mcontext, "url = "+link, Toast.LENGTH_SHORT).show();
 
 //        String sensortype[] = {"Temperature","Light","Sound","Humidity","Motion","Source"};
 //        JSONObject temp,light,sound,humidity,motion,source;
-        getData(link,"Temperature");
-        getData(link,"Light");
-        getData(link,"Sound");
+        getData(link, "Temperature");
+        getData(link, "Light");
+        getData(link, "Sound");
         getData(link, "Humidity");
         getData(link, "Motion");
-
-        Log.w("sensor", "temp = " + temp);
-        Log.w("sensor", "light = " + light);
-        Log.w("sensor", "sound = " + sound);
-        Log.w("sensor", "humidity = " + humidity);
-        Log.w("sensor", "motion = " + motion);
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.graph_recycler_view);
@@ -94,10 +88,10 @@ public class recycle_activity extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
 //        Request.Builder builder = new Request.Builder();
 //        Request request = builder.url(url).build();
-        Log.w("response", "url = " +url+"/measurements/channel/0/field/"+type+"?limit=20&sortOrder=desc");
+        Log.w("response", "url = " +url+"/measurements/channel/0/field/"+type+"?limit=100&sortOrder=desc&sd=254");
 
         Request request = new Request.Builder()
-                .url(url + "/measurements/channel/0/field/Motion?limit=21&sortOrder=desc")
+                .url(url + "/measurements/channel/0/field/"+type+"?limit=100&sortOrder=desc&sd=254")
 //                .header("User-Agent", "OkHttp Headers.java")
 //                .addHeader("Authorization", "Basic cmFzcGlwcDEyMzo=")
 //                .addHeader("Accept", "application/json; q=0.5")
@@ -137,6 +131,7 @@ public class recycle_activity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try{
+//                            Log.w("type",type+" === > ");
                             if(!strResult.equals("fails")){
                                 switch (type){
                                     case "Temperature" : temp = new JSONObject(strResult);count++;break;
@@ -147,6 +142,12 @@ public class recycle_activity extends AppCompatActivity {
                                 }
                                 Log.w("count",""+count);
                                 if(count == 5){
+                                    Log.w("data","temp = "+temp);
+                                    Log.w("data","light ="+light);
+                                    Log.w("data","sound = "+sound);
+                                    Log.w("data","humidity = "+humidity);
+                                    Log.w("data","motion = "+motion);
+
                                     mAdapter = new graphRecycleAdapter(temp,light,sound,humidity,motion);
                                     mRecyclerView.setAdapter(mAdapter);
                                 }
