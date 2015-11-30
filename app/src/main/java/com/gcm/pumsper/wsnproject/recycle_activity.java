@@ -88,10 +88,10 @@ public class recycle_activity extends AppCompatActivity {
         OkHttpClient okHttpClient = new OkHttpClient();
 //        Request.Builder builder = new Request.Builder();
 //        Request request = builder.url(url).build();
-        Log.w("response", "url = " +url+"/measurements/channel/0/field/"+type+"?limit=100&sortOrder=desc&sd=254");
+        Log.w("response", "url = " +url+"/measurements/channel/0/field/"+type+"?limit=50&sortOrder=desc&sd=254");
 
         Request request = new Request.Builder()
-                .url(url + "/measurements/channel/0/field/"+type+"?limit=100&sortOrder=desc&sd=254")
+                .url(url + "/measurements/channel/0/field/"+type+"?limit=50&sortOrder=desc&sd=254")
 //                .header("User-Agent", "OkHttp Headers.java")
 //                .addHeader("Authorization", "Basic cmFzcGlwcDEyMzo=")
 //                .addHeader("Accept", "application/json; q=0.5")

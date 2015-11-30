@@ -21,12 +21,13 @@ public class nodeRecycleAdapter extends RecyclerView.Adapter<nodeRecycleAdapter.
     }
     private Context mcontext ;
 
-    private String [] device = {"https://gekko.tinamous.com/api/v1/devices/7e78ed34-15de-44bb-b7d9-3ae464035653",
+    private String [] device = {
+            "https://gekko.tinamous.com/api/v1/devices/7e78ed34-15de-44bb-b7d9-3ae464035653",
             "https://gekko.tinamous.com/api/v1/devices/d72ed9b9-e9a1-498d-b5b2-d894ce33842b",
             "https://gekko.tinamous.com/api/v1/devices/93344de1-0645-45fe-895d-6ba42f913aa4",
             "https://gekko.tinamous.com/api/v1/devices/e51635b9-5d24-47d2-a618-c78800c8f303",
             "https://gekko.tinamous.com/api/v1/devices/5e9c236a-334d-4aca-9e85-103683bc9e5b",
-            " https://gekko.tinamous.com/api/v1/devices/29f78bd6-e616-4f18-8985-f0c7e979ddde"};
+            "https://gekko.tinamous.com/api/v1/devices/29f78bd6-e616-4f18-8985-f0c7e979ddde"};
 
     @Override
     public nodeRecycleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
